@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: my-app
-        image: <account-id>.dkr.ecr.ap-south-1.amazonaws.com/my-app:latest
+        image: 828360850570.dkr.ecr.ap-south-1.amazonaws.com/my-app:latest
         ports:
         - containerPort: 5000
 ---
