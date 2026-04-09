@@ -9,21 +9,19 @@ pipeline {
 
     stages {
 
-        stage('Clone Code') {
-            steps {
-                git branch: 'main', url: 'https://github.com/Sangamesh8055/EKS-Demonstration.git'
-            }
-        }
-
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t my-app .'
+                sh '''
+                docker build -t my-app .
+                '''
             }
         }
 
         stage('Tag Image') {
             steps {
-                sh 'docker tag my-app:latest $ECR_REPO:latest'
+                sh '''
+                docker tag my-app:latest $ECR_REPO:latest
+                '''
             }
         }
 
@@ -31,14 +29,16 @@ pipeline {
             steps {
                 sh '''
                 aws ecr get-login-password --region $AWS_REGION \
-                | docker login --username AWS --password-stdin $ECR_REPO
+                | docker login --username AWS --password-stdin 828360850570.dkr.ecr.ap-south-1.amazonaws.com
                 '''
             }
         }
 
         stage('Push Image') {
             steps {
-                sh 'docker push $ECR_REPO:latest'
+                sh '''
+                docker push $ECR_REPO:latest
+                '''
             }
         }
 
