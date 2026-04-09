@@ -11,7 +11,7 @@ pipeline {
 
         stage('Clone Code') {
             steps {
-                git 'https://github.com/Sangamesh8055/EKS-Demonstration.git'
+                git branch: 'main', url: 'https://github.com/Sangamesh8055/EKS-Demonstration.git'
             }
         }
 
